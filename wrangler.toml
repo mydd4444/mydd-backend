@@ -1,0 +1,21 @@
+name = "dd-live-api"
+main = "src/index.ts"
+compatibility_date = "2025-12-31"
+compatibility_flags = ["nodejs_compat"]
+
+durable_objects.bindings = [
+  { name = "LIVE_ROOM", class_name = "LiveRoom" }
+]
+
+migrations = [
+  { tag = "v1", new_classes = ["LiveRoom"] }
+]
+
+[vars]
+ALLOWED_ORIGINS = "https://app.mydd.com,https://mydd.com,https://www.mydd.com,http://localhost:8788,http://127.0.0.1:8788"
+
+# Agora App ID is safe to store as a var (it is public).
+AGORA_APP_ID = "5d5e84ffd2ca46c0a71cf82b8033ff6b"
+
+# Token TTL in seconds (default used by the worker is 3600)
+TOKEN_TTL_SECONDS = "7200"
